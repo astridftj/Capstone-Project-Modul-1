@@ -1,0 +1,399 @@
+# Import library "tabulate" 
+from tabulate import tabulate
+
+# Deklarasi login password
+login_password = "astrid"
+
+# Inisialisasi database siswa
+siswa = [
+    {
+        'NISN': '1234567891',
+        'Nama': 'Astrid Febiyani',
+        'Jenis Kelamin': 'Wanita',
+        'Agama': 'Katolik',
+        'Kelas': 'X-A',
+        'Email': 'astridfebiyani@gmail.com',
+        'Alamat': 'Jl. Ahmad Yani No. 123'
+    },
+    {
+        'NISN': '2345678901',
+        'Nama': 'Bobi Christian',
+        'Jenis Kelamin': 'Pria',
+        'Agama': 'Kristen',
+        'Kelas': 'X-A',
+        'Email': 'bobichristian@gmail.com',
+        'Alamat': 'Jl. Gungung Sari No. 456'
+    },
+    {
+        'NISN': '3456789012',
+        'Nama': 'Charlie Puth',
+        'Jenis Kelamin': 'Pria',
+        'Agama': 'Islam',
+        'Kelas': 'X-A',
+        'Email': 'charlieputh@gmail.com',
+        'Alamat': 'Jl. Gajah Mada No. 789'
+    },
+    {
+        'NISN': '4567890123',
+        'Nama': 'David Saputra',
+        'Jenis Kelamin': 'Pria',
+        'Agama': 'Hindu',
+        'Kelas': 'X-A',
+        'Email': 'davidsaputra@gmail.com',
+        'Alamat': 'Jl. Ciliwung No. 1011'
+    },
+    {
+        'NISN': '5678901234',
+        'Nama': 'Evelin Hadjaja',
+        'Jenis Kelamin': 'Wanita',
+        'Agama': 'Buddha',
+        'Kelas': 'X-A',
+        'Email': 'evelinhadjaja@gmail.com',
+        'Alamat': 'Jl. Karah Agung No. 1213'
+    },
+    {
+        'NISN': '6789012345',
+        'Nama': 'Frank Daffa',
+        'Jenis Kelamin': 'Pria',
+        'Agama': 'Konghucu',
+        'Kelas': 'X-A',
+        'Email': 'frankdaffa@gmail.com',
+        'Alamat': 'Jl. Bung Tomo No. 1415'
+    },
+    {
+        'NISN': '7890123456',
+        'Nama': 'Grace Angelin',
+        'Jenis Kelamin': 'Wanita',
+        'Agama': 'Katolik',
+        'Kelas': 'X-A',
+        'Email': 'graceangelin@gmail.com',
+        'Alamat': 'Jl. Pasar Kembang No. 1617'
+    },
+    {
+        'NISN': '8901234567',
+        'Nama': 'Harry Potter',
+        'Jenis Kelamin': 'Pria',
+        'Agama': 'Kristen',
+        'Kelas': 'X-A',
+        'Email': 'harrypotter@gmail.com',
+        'Alamat': 'Jl. Lontar Agung No. 1819'
+    },
+    {
+        'NISN': '9012345678',
+        'Nama': 'Iva Celine',
+        'Jenis Kelamin': 'Wanita',
+        'Agama': 'Kristen',
+        'Kelas': 'X-A',
+        'Email': 'ivaceline@example.com',
+        'Alamat': 'Jl. Zainal Abidin No. 2021'
+    },
+    {
+        'NISN': '1123456789',
+        'Nama': 'Jack Opa',
+        'Jenis Kelamin': 'Pria',
+        'Agama': 'Konghucu',
+        'Kelas': 'X-A',
+        'Email': 'jackopa@example.com',
+        'Alamat': 'Jl. Gungung Anyar No. 2223'
+    }
+]
+
+# Fungsi tampilan login
+def tampilan_login():
+    while True:
+        # Tampilan utama login dan input pengguna
+        print("============================================================")
+        print("Sistem Manajemen Data Siswa Saint's John School")
+        print("Silahkan login :)")
+        password = input("Masukkan password: ")
+        print("============================================================")
+
+        # Pengecekan login, jika benar masuk ke menu utama, jika salah tampilkan pesan kesalahan kemudian ulangi
+        if password == login_password:
+            tampilkan_menu_utama()
+        else:
+            print("Password salah, silahkan coba kembali!")
+
+# Fungsi tampilan menu utama
+def tampilkan_menu_utama():
+    while True:
+        # Tampilkan menu utama dan input pilihan pengguna di menu utama
+        print("============================================================")
+        print("Sistem Manajemen Data Siswa Saint's John School")
+        print("\nList Menu :")
+        print("1. Tampilkan Data Siswa")
+        print("2. Tambah Siswa")
+        print("3. Perbarui Siswa")
+        print("4. Hapus Siswa")
+        print("5. Keluar")
+        pilihan = input("Masukkan pilihan Anda: ")
+        print("============================================================")
+
+        # Pilihan 1 untuk menu utama
+        if pilihan == "1":
+            while True:
+                # Tampilan utama dan input pengguna untuk Menu Read atau Tampilkan Data Siswa
+                print("============================================================")
+                print("1. Tampilkan Semua Siswa")
+                print("2. Cari Siswa")
+                print("3. Kembali ke Menu Utama")
+                pilihan = input("Masukkan pilihan Anda: ")
+
+                # Evaluasi input Pilihan 1 untuk menampilkan data siswa keseluruhan
+                if pilihan == "1":
+                    tampilkan_siswa()
+            
+                # Evaluasi input Pilihan 2 untuk menampilkan data siswa sesuai NISN
+                elif pilihan == "2":
+                    nisn = input("Masukkan NISN siswa yang akan dicari: ")
+                    tampilkan_siswa_by_nisn(nisn)
+            
+                # Evaluasi input Pilihan 3 untuk kembali ke menu utama
+                elif pilihan == "3":
+                    break
+
+        # Pilihan 2 untuk menu utama yaitu Create atau Menambahkan data siswa      
+        elif pilihan == "2":
+            while True:
+                # Tampilan utama dan input pengguna untuk Menu Create atau Tambahkan Data Siswa 
+                print("============================================================")
+                print("1. Tambahkan Data Siswa")
+                print("2. Kembali ke Menu Utama")
+                pilihan = input("Masukkan pilihan Anda: ")
+            
+                # Evaluasi input Pilihan 1 untuk menambahkan data siswa
+                if pilihan == "1":
+                    # Input Pengguna untuk data siswa baru yang akan dimasukkan
+                    nisn = input("Masukkan NISN siswa: ")
+                    nama = input("Masukkan nama siswa: ")
+                    jenis_kelamin = input("Masukkan jenis kelamin siswa (Pria/Wanita): ")
+                    agama = input("Masukkan agama siswa: ")
+                    kelas = input("Masukkan kelas siswa: ")
+                    email = input("Masukkan alamat email siswa: ")
+                    alamat = input("Masukkan alamat siswa: ")
+
+                    # Pemanggilan fungsi tambahkan siswa dengan memasukkan input pengguna
+                    tambah_siswa(nisn, nama, jenis_kelamin, agama, kelas, email, alamat)
+
+                # Evaluasi input Pilihan 2 untuk kembali ke menu utama
+                elif pilihan == "2":
+                    break
+
+        # Pilihan 3 untuk menu utama yaitu Update atau Mengubah Data Siswa
+        elif pilihan == "3":
+            while True:
+                # Tampilan utama dan input pengguna untuk Menu Update atau Ubah Data Siswa
+                print("============================================================")
+                print("1. Ubah Data Siswa")
+                print("2. Kembali ke Menu Utama")
+                pilihan = input("Masukkan pilihan Anda: ")
+            
+                # Evaluasi input Pilihan 1 untuk ubah data siswa
+                if pilihan == "1":
+                    # Pengguna memasukkan nisn data siswa yang akan diperbarui, kemudian panggil fungsi tampilkan siswa by nisn
+                    nisn = input("Masukkan NISN yang akan diperbarui: ")
+                    tampil = tampilkan_siswa_by_nisn(nisn)
+
+                    if tampil:
+                      # Memastikan perubahan data
+                      input_ = input("Apakah anda yakin ingin melanjutkan update siswa? [Y]/[N]")
+
+                      # Jika iya, maka perbarui data siswa berdasarkan nisn
+                      if input_.lower() == 'y':
+                          perbarui_siswa(nisn)
+                
+                      # Jika tidak maka lanjut tampilan utama 
+                      else:
+                          pass
+
+                # Evaluasi input Pilihan 2 untuk kembali ke menu utama
+                elif pilihan == "2":
+                    break
+
+        # Pilihan 4 untuk menu utama yaitu Delete atau Menghapus Data Siswa
+        elif pilihan == "4":
+            while True:
+                # Tampilan utama dan input pengguna untuk Menu Delete atau Hapus Data Siswa
+                print("============================================================")
+                print("1. Hapus Data Siswa")
+                print("2. Kembali ke Menu Utama")
+                pilihan = input("Masukkan pilihan Anda: ")
+            
+                # Evaluasi input Pilihan 1 untuk menghapus data siswa berdasarkan nisn
+                if pilihan == "1":
+                    # Pengguna memasukkan nisn data siswa yang akan dihapus, kemudian panggil fungsi tampilkan siswa by nisn
+                    nisn = input("Masukkan NISN yang akan dihapus: ")
+                    tampil = tampilkan_siswa_by_nisn(nisn)
+
+                    if tampil:
+                      # Memastikan penghapusan data siswa
+                      input_ = input("Apakah anda ingin melanjutkan hapus data siswa ini? [Y]/[N]")
+                      
+                      # Jika iya, maka hapus data siswa berdasarkan nisn
+                      if input_.lower() == 'y':
+                          hapus_siswa(nisn)
+                      
+                      # Jika tidak maka lanjut tampilan utama
+                      else:
+                          pass
+
+                # Evaluasi input Pilihan 2 untuk kembali ke menu utama
+                elif pilihan == "2":
+                    break
+
+        # Pilihan 5 untuk keluar dari program maka program berhenti dan kembali ke login password
+        elif pilihan == "5":
+            print("Sampai Jumpa di Lain Hari & Tetap Semangat ya :)")
+            exit()
+    
+        # Pengguna memasukkan pilihan yang salah maka akan menampilkan pesan tidak valid
+        else:
+            print("Pilihan tidak valid. Silakan anda pilih opsi yang valid.")  
+
+# Fungsi untuk menampilkan daftar data siswa
+def tampilkan_siswa():
+    # Deklarasi utama tampilan dan list untuk menampilkan data siswa
+    header = ["NISN", "Nama", "Jenis Kelamin", "Agama", "Kelas", "Email", "Alamat"]
+    rows = []
+    
+    # Mengurutkan data siswa
+    siswa.sort(key=lambda x: x['Nama'])
+
+    # Melakukan iterasi pada database dan menambahkan pada list untuk menampilkan data siswa
+    for data_siswa in siswa:
+        row = [data_siswa['NISN'], data_siswa['Nama'], data_siswa['Jenis Kelamin'], data_siswa['Agama'], data_siswa['Kelas'], data_siswa['Email'], data_siswa['Alamat']]
+        rows.append(row)
+    
+    # Menampilkan data siswa keseluruhan dalam bentuk tabel
+    print(tabulate(rows, header, tablefmt="grid"))
+
+# Fungsi untuk menampilkan daftar siswa berdasarkan nisn (cari siswa)
+def tampilkan_siswa_by_nisn(input_nisn):
+    # Deklarasi utama tampilan dan list untuk menampilkan data siswa
+    header = ["NISN", "Nama", "Jenis Kelamin", "Agama", "Kelas", "Email", "Alamat"]
+    rows = []
+
+    # Melakukan iterasi pada database dan menambahkan pada list untuk menampilkan data siswa
+    for data_siswa in siswa:
+        # Jika NISN ditemukan, maka ditambahkan pada database tampilan
+        if input_nisn in data_siswa['NISN']:
+            row = [data_siswa['NISN'], data_siswa['Nama'], data_siswa['Jenis Kelamin'], data_siswa['Agama'], data_siswa['Kelas'], data_siswa['Email'], data_siswa['Alamat']]
+            rows.append(row)
+
+    # Jika list untuk menampilkan data siswa tidak kosong (data siswa dengan nisn tersebut ditemukan)
+    if rows:
+        # Maka menampilkan data siswa tersebut dalam bentuk tabel
+        print(tabulate(rows, header, tablefmt="grid"))
+        return True # Data siswa tersebut ada maka kembalikan nilai true
+
+    # Jika tidak ditemukan maka akan memberikan pesan bahwa data siswa tidak ditemukan
+    else:
+        print(f"Siswa dengan NISN '{input_nisn}' tidak ditemukan.")
+        return False # Data siswa tersebut tidak ada maka kembalikan nilai false
+
+# Fungsi untuk menambahkan siswa
+def tambah_siswa(nisn, nama, jenis_kelamin, agama, kelas, email, alamat):
+    while True:
+        # Evaluasi masukkan dari parameter yang diperoleh dari fungsi
+        # Merubah input jenis kelamin ke bentuk lowercase untuk mencegah perbedaan Case penulisan 
+        if jenis_kelamin.lower() == 'pria' or jenis_kelamin.lower() == 'wanita':
+            # Memastikan bahwa nisn hanya berupa angka dan panjang karakter 10
+            if nisn.isdigit() and len(nisn) == 10:
+                # Jika data siswa dengan nisn ditemukan maka akan menambahkan ke template dictionary untuk kemudian di tambahkan ke database list 
+                # Dan menampilkan pesan siswa berhasil ditambahkan serta keluar dari loop 
+                if not any(data_siswa['NISN'] == nisn for data_siswa in siswa):
+                    data_siswa = {
+                        'NISN': nisn,
+                        'Nama': nama,
+                        'Jenis Kelamin': jenis_kelamin,
+                        'Agama': agama,
+                        'Kelas': kelas,
+                        'Email': email,
+                        'Alamat': alamat
+                    }
+                    siswa.append(data_siswa)
+                    print("\nSiswa berhasil ditambahkan!\n")
+                    break  # Keluar dari perulangan jika input valid
+                
+                # jika input nisn sudah ada dalam data siswa maka akan menampilkan pesan pemberitahuan
+                else:
+                    print("NISN sudah ada dalam daftar siswa.")
+            
+            # jika tidak berupa angka maupun panjang karakternya 10 maka akan menampilkan pesan pemberitahuan
+            else:
+                print("Mohon maaf, NISN harus terdiri dari 10 digit.")
+        
+        # Jika terjadi kesalahan penulisan jenis kelamin maka akan menampilkan pesan pemberitahuan
+        else:
+            print("Mohon maaf, ada kesalahan dalam input data. Jenis kelamin harus 'Pria' atau 'Wanita'.")
+
+        # Mengulang permintaan input jika input tidak valid
+        print("============================================================")
+        nisn = input("Masukkan NISN siswa: ")
+        nama = input("Masukkan nama siswa: ")
+        jenis_kelamin = input("Masukkan jenis kelamin siswa (Pria/Wanita): ")
+        agama = input("Masukkan agama siswa: ")
+        kelas = input("Masukkan kelas siswa: ")
+        email = input("Masukkan alamat email siswa: ")
+        alamat = input("Masukkan alamat siswa: ")
+
+# Fungsi untuk memperbarui siswa dengan nisn
+def perbarui_siswa(nisn):
+    # Iterasi seluruh data siswa untuk menemukan data siswa yang sesuai dengan NISN
+    for data_siswa in siswa:
+        # Jika data siswa yang sesuai dengan nisn ditemukan, maka akan menampilkan keseluruhan isi data tersebut
+        if data_siswa["NISN"] == nisn:
+            print("Data siswa yang ingin diubah:")
+            for key, value in data_siswa.items():
+                if key != "NISN":
+                    print(f"{key}: {value}")
+
+            # Pengguna mendeskripsikan kolom ynag akan dirubah
+            print("============================================================")
+            kolom = input("Masukkan nama kolom yang ingin diubah: ").title()
+
+            # Jika kolom ditemukan atau sebagai kunci data siswa, maka input data baru untuk kolom tersebut
+            if kolom in data_siswa:
+                # Input data baru untuk kolom tersebut
+                data_baru = input(f"Masukkan data baru untuk {kolom}: ")
+
+                # Meyakinkan pengguna apakah ingin merubah data
+                pilihan = input(f"Apakah anda yakin ingin mengubah data {kolom} : {data_siswa[kolom]} dengan {kolom} : {data_baru} ? [Y]/[N]")
+                
+                # Jika ya maka data berhasil diubah
+                if pilihan.lower() == 'y':
+                    data_siswa[kolom] = data_baru
+                    print("\nData siswa berhasil diubah!\n")
+                
+                # Jika tidak maka data tidak jadi diubah
+                else:
+                    print("\nData tidak jadi diubah!\n")
+                    break
+            
+            # Menampilkan pesan tidak valid
+            else:
+                print("Kolom tidak valid.")
+          
+            # Keluar dari loop
+            break
+    
+    # Memberikan pesan bahwa nisn tidak ditemukan
+    else:
+        print("Siswa dengan NISN tersebut tidak ditemukan.")
+
+# Fungsi untuk menghapus siswa berdasarkan nama
+def hapus_siswa(nisn):
+    # Melakukan iterasi untuk mencari data siswa yang ingin dihapus berdasarkan masukkan nisn
+    for data_siswa in siswa:
+        # Jika nisn ditemukan maka data siswa akan dihapus dan menampilkan pesan siswa berhasil dihapus
+        if data_siswa['NISN'] == nisn:
+            siswa.remove(data_siswa)
+            print("\nSiswa berhasil dihapus!\n")
+            break
+            
+    # Jika nisn tidak ditemukan maka akan menampilkan pesan siswa tidak ditemukan
+    else:
+        print("Siswa tidak ditemukan.") 
+
+# Program utama
+tampilan_login()
