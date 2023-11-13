@@ -1,6 +1,6 @@
 # Capstone-Project-Modul-1
 
-# Sistem Manajemen Data Siswa
+# Aplikasi CRUD Sistem Manajemen Data Siswa
 
 Sistem Manajemen Data Siswa adalah program Python yang dirancang untuk menyederhanakan dan meningkatkan efisiensi pengelolaan data siswa di sebuah sekolah.
 
